@@ -7,14 +7,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>学霸点读助手2024版</title>
     <link href="/bootstrap5/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
- <link href="/css/root.css?x=5" rel="stylesheet" >
+ <link href="/css/root.css?x=6" rel="stylesheet" >
  
  <link rel="stylesheet" href="/jqueryUI011302/jquery-ui.css" >
  <script src="/js/jquery.js"></script>
   <!--
   <script src="https://www.elearn007.com/js/gl.js"></script>
   -->
-  <script src="/js/imgapp.js?x=34"></script>
+  <script src="/js/imgapp.js?x=129"></script>
   <script src="/jqueryUI011302/jquery-ui.js"></script>
   </head>
   <body style="padding-left:5px;padding-right:5px; background:white" >
@@ -103,15 +103,93 @@
   //create a selection controls
   
    $(document).ready(function(){
-	     
+	      
 	     //from a name called imgapp_root file
       //that is in json_db_imgapp directory.
+       
         listProjects();
-       // test();
-   });
+        
+$('.carousel').on('slid.bs.carousel',function(e){
+      $('.hotTxt').remove();
+      
+
+         var slideFrom = $(this).find('.active').index();
+         var slideTo = $(e.relatedTarget).index();
+         tit="小猫的故事";
+         cc={title:tit,posPage:eval(slideTo)};
+      $.ajax({	
+       type: "POST",
+       dataType: "text",
+       url: "/images_manager/reportlist_imgapp_bk.php",
+       data:cc,
+       success: function(result){
+             pos_n=result.indexOf("]");
+             fileCount=result.substring(1,pos_n);
+             result=result.substring(pos_n+1);
+             
+             result=JSON.parse(result);
+             arrayobj=result.records;
+             
+        for(seed=0;seed<=arrayobj.length-1;seed++){
+
+	            u1=arrayobj[seed];
+	            var newButton= $("<button></button>");
+
+             newButton.html(u1.content_en);
+             newButton.css({"position":"relative","top":u1.top,"left":"0px","z-index":"999"});
+   
+              newButton.attr("audio_en",u1.audio_en);
+             // alert(u1.top);
+              newButton.css({"top":u1.top});
+              newButton.css({"left":u1.left});
+              newButton.addClass("hotTxt");
+              newButton.addClass(u1.classname_en);
+              
+              $('.carousel-inner').find('.active').append(newButton);
+        }//for loop
+	            
+            
+             
+       },//success
+       complete: function (data) {
+                                  	         
+           audioName = new Audio();
+           $('.hotTxt').on("click",function(){
+           
+            audioEn=$(this).attr("audio_en");
+                                   	           
+                     
+            audioName.src=audioEn;
+             audioName.play();
+           });//on done
+       }
+           
+      });//ajax end
+	 });//on end
+
+      
+      
+        
+        
+              
+              
+             
+              
+      
+
+
+         
+         
+         
+       
+   });//doc done
   
   
+      
+      
   </script>
+  
+  
   
   
   
