@@ -14,7 +14,7 @@
   <!--
   <script src="https://www.elearn007.com/js/gl.js"></script>
   -->
-  <script src="/js/imgapp.js?x=129"></script>
+  <script src="/js/imgapp.js?x=130"></script>
   <script src="/jqueryUI011302/jquery-ui.js"></script>
   </head>
   <body style="padding-left:5px;padding-right:5px; background:white" >
@@ -115,7 +115,7 @@ $('.carousel').on('slid.bs.carousel',function(e){
 
          var slideFrom = $(this).find('.active').index();
          var slideTo = $(e.relatedTarget).index();
-         tit="小猫的故事";
+        // alert(tit);
          cc={title:tit,posPage:eval(slideTo)};
       $.ajax({	
        type: "POST",
