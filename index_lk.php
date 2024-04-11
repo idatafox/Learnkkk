@@ -19,3 +19,19 @@ function initTit(){
        tit="走遍中国";
 }
 
+
+function createVoiceWall(){
+	   cc={title:tit,posPage:0};
+
+    readJsonFile(cc);
+    
+}//createVoiceWall over
+
+
+$(document).ready(function(){
+	      //get global variables :tit
+       alert("running...");
+        initTit()；
+        createVoiceWall()；
+   });//doc over 
+  
