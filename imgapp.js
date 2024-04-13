@@ -3,10 +3,12 @@ var idV;
 var tit;
 var fcount;
 var namelist=[];
+var imgItemList=[];
 var logTxt="";
 var txt;
 var pictxt;
 var doctxt;
+var res;
 function test1(){
 
 	alert($("body").html());
@@ -269,13 +271,13 @@ for(pseed=0;pseed<=fcount-1;pseed++)
 
 function IVdisplay(obj){
 
-
+  if(obj.ifindexpage=="0"){
    pictxt=pictxt+"<div class=\"row paddingCfg-a\">\n";
    pictxt=pictxt+"<div class=\"col-8\" >\n";
    pictxt=pictxt+"<p class=\"textCfg\">";
    pictxt=pictxt+" <button type=\"button\" class=\"btn btn-primary \" \n";
    pictxt=pictxt+" data-bs-toggle=\"modal\" \n ";
-   pictxt=pictxt+" onclick=invokeDocViewByIndexPg('"+obj.title+"') \n";
+   pictxt=pictxt+" onclick=invokeDocViewByIndexPg('"+obj.cfile+"') \n";
    pictxt=pictxt+" data-bs-target=\"#exampleModalLong\"> \n";
    pictxt=pictxt+obj.title+"\n";
    pictxt=pictxt+"</button>\n";
@@ -289,7 +291,7 @@ function IVdisplay(obj){
    pictxt=pictxt+"    </div> \n ";
    pictxt=pictxt+"</div> \n ";
    
-    
+  }
     
     
    
@@ -380,9 +382,10 @@ function addlogline(funcname,linetxt){
 	  
 //首页部分的文档模式
 function invokeDocViewByIndexPg(obj){
-	    doctxt="";
+	   doctxt="";
 	  //parameters obj initial cc json objec
     cc={title:obj};
+    $("#arc").html(obj);
    // visit configure file
      $.ajax({	
 
@@ -395,12 +398,55 @@ function invokeDocViewByIndexPg(obj){
                     data:cc,
                     success: function(result){
                         //   alert("pathV"+pathV+"## result="+result);
-	                       
+	                       //alert("66666"+result);
 	                       addlogline("invokeDocViewByIndexPg",result);
 	                       result=JSON.parse(result);
+	                       //alert(result.title);
+	                       obj=result;
 	                       
 	                      //doctxt variable for doc view 
-	                       IVdisplay_doc(result); 
+
+
+		  doctxt=doctxt+"<imgItem orderpos=\"a0\">\n";
+
+	                         	  doctxt=doctxt+"		                     <div class=\"imgenty\">\n";
+	                         	  doctxt=doctxt+"					                      <img src=\""+obj.img+"\" class=\"img-fluid\"/>\n";
+	          doctxt=doctxt+"	                 	                     </div>\n";
+	                         	                 		                     doctxt=doctxt+"<p class=\"imgdoc\">\n";
+	                         	                 		                     doctxt=doctxt+obj.ides+"\n";
+	                         	                 		                     doctxt=doctxt+"</p>\n";
+	                         	                 		                     doctxt=doctxt+"</imgItem>\n";
+	   //loop get images
+    for(seed=0;seed<=obj.records.length-1;seed++){
+	       dataOne=obj.records[seed];
+	       //alert(dataOne.filename);
+			  doctxt=doctxt+"<imgItem orderpos=\"a0\">\n";
+
+
+
+		  doctxt=doctxt+"		                     <div class=\"imgenty\">\n";
+		  if(dataOne.filename.indexOf("mp4")<0)
+		     doctxt=doctxt+"					                      <img src=\""+dataOne.filepath+dataOne.filename+"\" class=\"img-fluid\"/>\n";
+		  else{
+			   doctxt= doctxt + "	<video id=\"" + dataOne.id + "c\" class=\"w-100\" controls>";
+
+                              doctxt= doctxt +  "    <source src=\"" +dataOne.filepath+dataOne.filename+ "\" type=\"video/mp4\">";
+
+                              doctxt=doctxt+  " </video>";
+	                         	  }
+	                         	  
+	          doctxt=doctxt+"		                     </div>\n";
+	          
+					                     doctxt=doctxt+"<p class=\"imgdoc\">\n";
+
+				                     doctxt=doctxt+dataOne.note+"\n";
+				                     doctxt=doctxt+dataOne.content+"\n";
+
+	                         	                 		                     doctxt=doctxt+"</p>\n";
+	                         	                 		                     doctxt=doctxt+"</imgItem>\n";
+	   //loop get images
+	                         
+    }
 
                         
                            
@@ -408,11 +454,17 @@ function invokeDocViewByIndexPg(obj){
                     },
                     complete:function(data){
                           
-	                    // alert("88889999"+txt);
-                     
-                      $(".modal-body").html(doctxt);
+	                    // alert("88889999");
+	                    jst=JSON.stringify(res);
+	                    // alert("obj.title"+obj.title);
+	                     $("#title_doc").html(obj.title);
+                      IVdisplay_doc(res); 
+                    //  $(".modal-body").html(doctxt);
                       addlogline("",doctxt);
                       $("#logfull").html(doctxt);
+	                     $("#title_doc").html(obj.title);
+		                     
+	                     
                       
                     }// complete over
               });//ajax ove
@@ -420,18 +472,9 @@ function invokeDocViewByIndexPg(obj){
 }
 
 function IVdisplay_doc(obj){
-	   alert("IVdisplay_doc start...");
-	   $("#title_doc").html(obj.title);
-	                  	  doctxt=doctxt+"<imgItem orderpos=\"a0\">\n";
-	                  	  doctxt=doctxt+"		                     <div class=\"imgenty\">\n";
-	                  	  doctxt=doctxt+"					                      <img src=\""+obj.img+"\" class=\"img-fluid\"/>\n";
-	   doctxt=doctxt+"	                 	                     </div>\n";
-	                  	                 		                     doctxt=doctxt+"<p class=\"imgdoc\">\n";
-	                  	                 		                     doctxt=doctxt+obj.ides+"\n";
-	                  	                 		                     doctxt=doctxt+obj.ides+"</p>\n";
-	                  	                 		                     doctxt=doctxt+obj.ides+"</imgItem>\n";
-	                  	                 		                     
-$("#ilist").html(doctxt);
+	//alert("IVdisplay_doc start...");
+
+    $("#ilist").html(doctxt);
 				                        
 }
 
