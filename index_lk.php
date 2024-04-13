@@ -14,7 +14,7 @@
   <!--
   <script src="https://www.elearn007.com/js/gl.js"></script>
   -->
-  <script src="/js/imgapp.js?x=130"></script>
+  <script src="/js/imgapp.js?x=140"></script>
   <script src="/jqueryUI011302/jquery-ui.js"></script>
   </head>
   <body style="padding-left:5px;padding-right:5px; background:white" >
@@ -29,6 +29,12 @@
         initTit();
         createVoiceWall();
         addLisenToCarousel();
+        ifdebug="0";
+        getprojectsByArray();
+        
+        $("#logfull").val(txt);
+        
+        
         
         
    });//doc
@@ -128,6 +134,32 @@
            
                     <img   src="/service/images/service_01.jpg" class="img-fluid paddingCfg"/>
     </div>  </div>
+    
+    
+    
+    <!--  图片墙动态生成.开始-->
+ <div id="bbb"></div>
+ <div class="row paddingCfg-a">
+
+    <div class="col-8" >
+
+      <p class="textCfg">
+      <a href="/small/live/live_dqthz.html?x=1" target="_new" class="common">	
+            <b>图文直播|德清县到杭州市</b>
+       </a>
+               <span class="textCfg">
+          	  天气不错，但过程很波折。
+               </span>
+          </p>
+    </div>
+    <div class="col-4">
+               <img   src="/images/live/live_2023030502.jpg" class="img-fluid paddingCfg"/>
+    </div>  
+ </div>
+    
+    
+    <!--  图片墙动态生成.结束-->
+    
      <!--  德清县到杭州市-->
     <div class="row paddingCfg-a">
     <div class="col-8" >
@@ -647,15 +679,88 @@
     </div>
     
   </div>
-  
-  
-  
-  
-  
-  
-  
-  
+     
+     
+  <div class="row">
+    <div class="col-10 " >
+        
+        <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true" >
+
+
+
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 id="arc" class="modal-title" >Modal title00</h5>
+        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+            <p id="title_doc"> </p>
+            <imglist id="ilist">
+	
+	                  <imgItem orderpos="0">
+		                     <div class="imgenty">
+			                      <img src=""/>
+		                     </div>
+		                     
+			                        <p class="imgdoc">
+				
+			                        </p>
+		                     
+			                </imgItem>
+			                
+	           </imglist>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        
+      </div>
+    </div>
+  </div>
 </div>
+        
+        
+        
+    </div><!--  col end -->
+    <div class="col-1 ">
+	   </div>
+		 </div>
+		 
+		 
+		   <div class="row">
+
+	<button onclick="test1()">测试演示</button>
+		<textarea id="logfull" rows="200"
+
+	          cols="100%">
+
+		
+	</textarea><div class="col-10 ">
+	
+	         
+	    </div><!--  col end -->
+
+    <div class="col-1 ">
+
+	   </div>
+		   </div><!--  row end -->
+		 
+		 
+		 
+
+</div>
+
+
+
+
+
+
+	
+
+
+
 
         <!--   foot    -->
 
@@ -702,7 +807,7 @@
       <script src="/bootstrap5/js/bootstrap.bundle.min.js"  crossorigin="anonymous"></script>
     </body>
   </html>
-	
+	<!--
 	<button onclick="test1()">测试演示</button>
 		<textarea id="logfull" rows="200"
 
@@ -710,4 +815,5 @@
 
 		
 	</textarea>
+	-->
 	
