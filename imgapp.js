@@ -6,6 +6,7 @@ var namelist=[];
 var logTxt="";
 var txt;
 var pictxt;
+var doctxt;
 function test1(){
 
 	alert($("body").html());
@@ -379,10 +380,60 @@ function addlogline(funcname,linetxt){
 	  
 //首页部分的文档模式
 function invokeDocViewByIndexPg(obj){
-	  alert(obj);
+	    doctxt="";
+	  //parameters obj initial cc json objec
+    cc={title:obj};
+   // visit configure file
+     $.ajax({	
+
+                   
+
+                   type: "POST",
+
+                   dataType: "text",
+                    url: "/images_manager/reportlistBK.php",
+                    data:cc,
+                    success: function(result){
+                        //   alert("pathV"+pathV+"## result="+result);
+	                       
+	                       addlogline("invokeDocViewByIndexPg",result);
+	                       result=JSON.parse(result);
+	                       
+	                      //doctxt variable for doc view 
+	                       IVdisplay_doc(result); 
+
+                        
+                           
+                           
+                    },
+                    complete:function(data){
+                          
+	                    // alert("88889999"+txt);
+                     
+                      $(".modal-body").html(doctxt);
+                      addlogline("",doctxt);
+                      $("#logfull").html(doctxt);
+                      
+                    }// complete over
+              });//ajax ove
+    
 }
 
-
+function IVdisplay_doc(obj){
+	   alert("IVdisplay_doc start...");
+	   $("#title_doc").html(obj.title);
+	                  	  doctxt=doctxt+"<imgItem orderpos=\"a0\">\n";
+	                  	  doctxt=doctxt+"		                     <div class=\"imgenty\">\n";
+	                  	  doctxt=doctxt+"					                      <img src=\""+obj.img+"\" class=\"img-fluid\"/>\n";
+	   doctxt=doctxt+"	                 	                     </div>\n";
+	                  	                 		                     doctxt=doctxt+"<p class=\"imgdoc\">\n";
+	                  	                 		                     doctxt=doctxt+obj.ides+"\n";
+	                  	                 		                     doctxt=doctxt+obj.ides+"</p>\n";
+	                  	                 		                     doctxt=doctxt+obj.ides+"</imgItem>\n";
+	                  	                 		                     
+$("#ilist").html(doctxt);
+				                        
+}
 
 
 
