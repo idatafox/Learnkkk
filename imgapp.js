@@ -272,7 +272,12 @@ function IVdisplay(obj){
    pictxt=pictxt+"<div class=\"row paddingCfg-a\">\n";
    pictxt=pictxt+"<div class=\"col-8\" >\n";
    pictxt=pictxt+"<p class=\"textCfg\">";
-   pictxt=pictxt+"<button>"+obj.title+"</button>\n";
+   pictxt=pictxt+" <button type=\"button\" class=\"btn btn-primary \" \n";
+   pictxt=pictxt+" data-bs-toggle=\"modal\" \n ";
+   pictxt=pictxt+" onclick=invokeDocViewByIndexPg('"+obj.title+"') \n";
+   pictxt=pictxt+" data-bs-target=\"#exampleModalLong\"> \n";
+   pictxt=pictxt+obj.title+"\n";
+   pictxt=pictxt+"</button>\n";
    pictxt=pictxt+"      <span class=\"textCfg\">\n";
    pictxt=pictxt+obj.ides;
    pictxt=pictxt+"                </span>\n";
@@ -372,7 +377,10 @@ function addlogline(funcname,linetxt){
 			     logTxt=logTxt+"\n "+funcname+":log start!\n "+linetxt+"]\n";
 }
 	  
-
+//首页部分的文档模式
+function invokeDocViewByIndexPg(obj){
+	  alert(obj);
+}
 
 
 
