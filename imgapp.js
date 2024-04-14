@@ -277,7 +277,7 @@ function IVdisplay(obj){
    pictxt=pictxt+"<p class=\"textCfg\">";
    pictxt=pictxt+" <button type=\"button\" class=\"btn btn-primary \" \n";
    pictxt=pictxt+" data-bs-toggle=\"modal\" \n ";
-   pictxt=pictxt+" onclick=invokeDocViewByIndexPg('"+obj.cfile+"') \n";
+   pictxt=pictxt+" onclick=invokeDocViewByIndexPg('"+obj.cfile+"','"+obj.title+"') \n";
    pictxt=pictxt+" data-bs-target=\"#exampleModalLong\"> \n";
    pictxt=pictxt+obj.title+"\n";
    pictxt=pictxt+"</button>\n";
@@ -381,11 +381,11 @@ function addlogline(funcname,linetxt){
 }
 	  
 //首页部分的文档模式
-function invokeDocViewByIndexPg(obj){
+function invokeDocViewByIndexPg(obj,title){
 	   doctxt="";
 	  //parameters obj initial cc json objec
     cc={title:obj};
-    $("#arc").html(obj);
+    $("#arc").html(title);
    // visit configure file
      $.ajax({	
 
