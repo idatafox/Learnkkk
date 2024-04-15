@@ -14,7 +14,7 @@
   <!--
   <script src="https://www.elearn007.com/js/gl.js"></script>
   -->
-  <script src="/js/imgapp.js?x=130"></script>
+  <script src="/js/imgapp.js?x=133"></script>
   <script src="/jqueryUI011302/jquery-ui.js"></script>
   </head>
   <body style="padding-left:5px;padding-right:5px; background:white" >
@@ -162,16 +162,23 @@ $('.carousel').on('slid.bs.carousel',function(e){
             audioName.src=audioEn;
              audioName.play();
            });//on done
-       }
+           
+           //alert("fcount:"+fcount);
+           
+           
+           
+       }//complete over
            
       });//ajax end
+    
+   addLisenToCarousel();
+    
 	 });//on end
-
-      
-      
         
         
-              
+      
+        
+     
               
              
               
@@ -226,7 +233,7 @@ $('.carousel').on('slid.bs.carousel',function(e){
   
   
   
-  
+
   
   
   
