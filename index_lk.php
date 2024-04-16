@@ -14,7 +14,7 @@
   <!--
   <script src="https://www.elearn007.com/js/gl.js"></script>
   -->
-  <script src="/js/imgapp.js?x=140"></script>
+  <script src="/js/imgapp.js?x=143"></script>
   <script src="/jqueryUI011302/jquery-ui.js"></script>
   </head>
   <body style="padding-left:5px;padding-right:5px; background:white" >
@@ -275,7 +275,7 @@
 	                 <h2>  欢迎扫码加好友  </h2>
 	           </li>
 	           <li>
-	            <img   src="/service/images/service_03.png?x=8" class="img-fluid"/>
+	            <img   src="/images/06.png?x=9" class="img-fluid"/>
                                         </li>
                                          <li>了解中国社会/学习编程、英语、绘画/推广与卖货、市场调研、加盟合作拓展/交友、合作
                                          </li>
