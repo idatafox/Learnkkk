@@ -83,7 +83,15 @@ function reOrderImageList(){
    }
    
 }
+function rechangeItemNote(){
+	   //alert(fcount+":"+tit);
+	   
+	   for(i=0;i<=eval(fcount-1);i++){
+     
+     
 
+	   }
+}
 function addLisenToCarousel(){
 
 $('.carousel').on('slid.bs.carousel',function(e){
@@ -92,6 +100,7 @@ $('.carousel').on('slid.bs.carousel',function(e){
          if(iforder=="-1"){
 	        //alert("reorder");
 	        reOrderImageList();
+	        rechangeItemNote();
 	        iforder="0";
 	
          }
@@ -129,9 +138,18 @@ $('.carousel').on('slid.bs.carousel',function(e){
               newButton.addClass("hotTxt");
               newButton.addClass(u1.classname_en);
               $('.carousel-inner').find('.active').append(newButton);
+             
+             
               
         }//for loop
-	            
+	        //重新添加图片总说明
+	        fx=$('.carousel-inner').find('.active img').attr("src");
+	        // alert('fx:'+fx+"ttoposp:"+slideTo);
+	         $('.carousel-inner').find('.active h8').html(result.filename);
+	         $('.carousel-inner').find('.active h2').html(result.title);
+	         $('.carousel-inner').find('.active content').html(result.content);
+	         
+	         
             
              
        },//success
