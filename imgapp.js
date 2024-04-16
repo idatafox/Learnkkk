@@ -4,17 +4,21 @@ var tit;
 var fcount;
 var namelist=[];
 var imgItemList=[];
+var imgItemList_order=[];
 var logTxt="";
 var txt;
 var pictxt;
 var doctxt;
 var res;
+var iforder="-1";
 function test1(){
 
-	alert($("body").html());
+	
 
 	ccc=$("body").html();
-	$("#logfull").val(ccc);
+	$("#logfull").val(txt);
+ reOrderImageList();
+	//
 }
 function initTit(){
 	  	   htmlcc="";
@@ -34,7 +38,7 @@ function initTit(){
          }// complete over
        });//ajax over
 
-       tit="走遍中国";
+       tit="少儿英语";
 }
 function createVoiceWall(){
 
@@ -43,11 +47,56 @@ function createVoiceWall(){
 
     readJsonFile(cc);
     
+    
 }//createVoiceWall over
 
+//re order array of image item
+function reOrderImageList(){
+//alert("888");
+ var bbc=$(".carousel-item");
+  // alert("bbc:"+$(bbc[0]).html()+"bbc len:"+bbc.length);
+   len=bbc.length;
+   idv="";
+   oid="";
+  // alert("len:"+len);
+   
+   for(i=0;i<=eval(len-1);i++){
+	      oid="#a"+i;
+      // alert(oid);
+	        imgv=$(".carousel-item img").eq(i).attr("src");
+	      //  alert("img="+imgv);
+	     spos=imgv.lastIndexOf("/");
+	     //alert(spos);
+	     subV=imgv.substring(0,spos);
+	     
+	     
+	  spos=imgv.lastIndexOf(".");
+	   fv=imgv.substring(spos);
+	    //alert("subv:"+subV+"fv:"+fv);  
+	    srcv=subV+"/0"+eval(i+1)+fv;
+	    $(".carousel-item img").eq(i).attr("src",srcv);
+
+	   // alert(srcv);
+
+	        
+	       
+   }
+   
+}
+
 function addLisenToCarousel(){
+
 $('.carousel').on('slid.bs.carousel',function(e){
+         //$("#logfull").val(txt);
          
+         if(iforder=="-1"){
+	        //alert("reorder");
+	        reOrderImageList();
+	        iforder="0";
+	
+         }
+
+        
          var slideFrom = $(this).find('.active').index();
          var slideTo = $(e.relatedTarget).index();
         // alert(tit);
@@ -96,9 +145,10 @@ $('.carousel').on('slid.bs.carousel',function(e){
                      
             audioName.src=audioEn;
              audioName.play();
+             //reOrderImageList();
            });//on done
        }
-           
+        
       });//ajax end
 	 });//on end
 
@@ -136,11 +186,13 @@ function listProjects(){
            htmlcc=htmlcc+"</select>";
            $("#ps").html(htmlcc);
            tit=$('#pvl option:selected').text();
+          // alert("8888888888");
            cc={title:tit,posPage:0};
            readJsonFile(cc);
         },
         complete: function (data){
-	         $("#pvl").on("change",function(){
+	            $("#pvl").on("change",function(){
+		            iforder="-1";
 		            tit=$('#pvl option:selected').text();
 		            cc={title:tit,posPage:0};
               readJsonFile(cc);
@@ -154,9 +206,9 @@ function listProjects(){
 }//func over
 //≠=====≠==========
 function readJsonFile(cc){
-//	alert(cc.title);
-  	$("#aa").html("请稍候,装载中(readJsonFile)...");
-  	$.ajax({	
+ //alert(cc.title);
+	$("#aa").html("请稍候,装载中(readJsonFile)...");
+	$.ajax({	
        type: "POST",
        dataType: "text",
        url: "/images_manager/reportlist_imgapp_bk.php",
@@ -169,7 +221,9 @@ function readJsonFile(cc){
              
    
              result=result.substring(pos_n+1);
-             result=JSON.parse(result);
+              result=JSON.parse(result);
+              
+
             
 
        },
@@ -177,7 +231,9 @@ function readJsonFile(cc){
 	    
       
 	        // set indicators
-          txt="";
+          
+          
+     txt="";
 for(pseed=0;pseed<=fcount-1;pseed++)
       {
 	        // u1=arrayobj[pseed];
@@ -194,24 +250,33 @@ for(pseed=0;pseed<=fcount-1;pseed++)
           
           $('#indicators').html(txt);
 	           ////////////////
-	          for(i=0;i<=fcount-1;i++){
-		             addItem(i);
-	          }
-	        //display(result,fcount);
 	          
+	        //display(result,fcount);
 	        
+	          for(i=0;i<=fcount-1;i++){
+
+
+             
+		             addItem(i);
+
+	          }
+          
+	          
        }
+      }).done(function(){
+	           // $("#inner").html(txt);
       });
 	}
 	
 	//========================
 	function addItem(ipos){
-
-	
+   txt="";
+   
+	 
       // alert("tit"+tit);
 	    // tit=$('#pvl option:selected').text();
 	  //  tit="小猫的故事";
-	    txt="";
+	    
 	     cc={title:tit,posPage:ipos};
 	     $.ajax({	
 
@@ -227,15 +292,21 @@ for(pseed=0;pseed<=fcount-1;pseed++)
              fcount=fileCount;
              result=result.substring(pos_n+1);
              
-             obj=JSON.parse(result);
-             if(ipos==0)
+             obj=JSON.parse(result);//point time key
+             
+             
+             
+       },
+       complete: function (data){
+          // alert("8989");
+			       //$('#inner').html(txt); 
+	           if(ipos==0)
              txt=txt+ "     <div id='a"+ipos+"' class=\"carousel-item active \">\n";
              else
              txt=txt+ "     <div id='a"+ipos+"' class=\"carousel-item  \">\n";
+             
+             txt=txt+"     <img  src=\""+obj.filepath+""+obj.filename+"\" class=\"d-block w-100 h-100 \" alt=\"...\">";
 
-
-                                 // txt=txt+"     <img src=\""+u1.filepath+""+u1.filename+"\" class=\"d-block w-100\" alt=\"...\">";
-                                 txt=txt+"     <img  src=\""+obj.filepath+""+obj.filename+"\" class=\"d-block w-100 h-100 \" alt=\"...\">";
                                   txt=txt+"            <div class=\"carousel-caption "+obj.class_tit +"\" >\n";
                
                                    txt=txt+"                <h2 class=\""+ obj.class_tit_0+ "\"> <b>"+obj.title+"</b></h2>\n";
@@ -243,25 +314,13 @@ for(pseed=0;pseed<=fcount-1;pseed++)
                                    txt=txt+"           <h8 class=\"" + obj.class_tit_2 +"\"> "+obj.filename+"</h8>\n";
                                     txt=txt+"                <p class='content "+obj.class_tit_3+"'>"+obj.content+"</p>\n";
                                      txt=txt+"              </div>   </div>\n ";
-                                     
-                                  // $('#log1').html("["+obj.content+"]"+ncount+"/"+fc);
-                                   //txt=$('#inner').html()+txt;
-                                   //alert("yyyyyy="+txt);
-                                 $('#inner').html(txt); 
-             
-             
-       },
-       complete: function (data){
-
-	           
-	           
-	           
-	           
-
+                $("#inner").html(txt);
+                imgItemList.push(txt);
+              //  reOrderImageList();
        }
        
         });
-  }
+  }//addItem Over
   
   
   
@@ -359,7 +418,7 @@ function IV_readJsonFile(cc){
 	                       addlogline("IV_readjsonfile",result);
 	                       result=JSON.parse(result);
 	                       IVdisplay(result); 
-
+                        $("#bbb").html(pictxt);
                         
                            
                            
@@ -367,7 +426,7 @@ function IV_readJsonFile(cc){
                     complete:function(data){
                           
 	                    // alert("88889999"+txt);
-                      $("#bbb").html(pictxt);
+                      
                       addlogline("",pictxt);
                       $("#logfull").html(pictxt);
                       
