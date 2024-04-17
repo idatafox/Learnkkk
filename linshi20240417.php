@@ -1,0 +1,2 @@
+var imgAndVoiceProject={};
+var imgAndVoiceProjectArray=[];
