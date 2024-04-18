@@ -11,17 +11,47 @@ var pictxt;
 var doctxt;
 var res;
 var iforder="-1";
+
+var imgAndVoiceProjectArray=[];
+
 function test1(){
-
-	
-
 	ccc=$("body").html();
 	$("#logfull").val(txt);
- reOrderImageList();
+	changeItem();
+// reOrderImageList();
 	//
 }
+function init_bb(){
+			     htmlcc="";
+
+       cc={topic:"root"};
+
+       $.ajax({	
+
+        type: "POST",
+
+        dataType: "text",
+        url: "/images_manager/imgapp_listprojects.php",
+        data:cc,
+        success: function(result){
+             // result=JSON.parse(result);
+              
+	           //  alert("sum project:"+imgAndVoiceProjectArray.length);
+
+
+	             
+         },//success over
+         complete:function(data){
+	               
+         }// complete over
+       });//ajax over
+
+       
+}
+
 function initTit(){
-	  	   htmlcc="";
+	   
+		     htmlcc="";
        cc={topic:"root"};
        $.ajax({	
 
@@ -31,31 +61,115 @@ function initTit(){
         url: "/images_manager/imgapp_listprojects.php",
         data:cc,
         success: function(result){
-	
+              result=JSON.parse(result);
+              for(seed=0;seed<=result.records.length-1;seed++){
+	                imgAndVoiceProject={};
+	                obj=result.records;
+	                
+	                imgAndVoiceProject.filename=result.records[seed].filename;
+	                imgAndVoiceProject.ides=result.records[seed].ides;
+	                
+	                imgAndVoiceProject.filepath=result.records[seed].filepath;
+	                imgAndVoiceProject.columnname=result.records[seed].columnname;
+	                imgAndVoiceProjectArray.push(imgAndVoiceProject);
+	                
+              }//for end.
+	           //  alert("sum project:"+imgAndVoiceProjectArray.length);
+
+
+	             
          },//success over
          complete:function(data){
-	
+	                createIVProjectListView();
          }// complete over
        });//ajax over
 
-       tit="少儿英语";
+       
 }
 function createVoiceWall(){
-
+    
+    tit="少儿英语";
 	   cc={title:tit,posPage:0};
-
-
     readJsonFile(cc);
+    
+    
     
     
 }//createVoiceWall over
 
+function createVoiceWall_bb(){
+    
+   // tit="少儿英语";
+    $("#pvl contain:contains('走遍中国')").attr("selected",true).change();
+   // alert("tit======="+tit);
+	   cc={title:tit,posPage:0};
+    readJsonFile(cc);
+    
+    
+    
+    
+}//createVoiceWall over
+
+function createIVProjectListView(){
+	  txt="";
+   ncount=imgAndVoiceProjectArray.length;
+   arrayobj=imgAndVoiceProjectArray;
+  // alert("ncount:"+imgAndVoiceProjectArray.length);
+	  for(seed=0;seed<=arrayobj.length-1;seed++)
+	  {
+		    
+		    if(seed==0)
+
+             txt=txt+ "		<div class=\"row paddingCfg-a\">\n";
+             else
+             txt=txt+ "		<div class=\"row paddingCfg-a\">\n";
+             
+             txt=txt+"      <div class=\"col-8\" >\n";
+
+                                  txt=txt+"                 <p class=\"textCfg\">\n";
+                                   txt=txt+" <button type=\"button\" class=\"btn btn-primary \" \n";
+   txt=txt+" data-bs-toggle=\"modal\" \n ";
+   txt=txt+" onclick=newOpenWin('"+arrayobj[seed].ides+"','"+arrayobj[seed].columnname+"') \n";
+   txt=txt+" data-bs-target=\"#exampleModalLong_8\"> \n";
+   txt=txt+imgAndVoiceProjectArray[seed].columnname+" \n</button>";
+                                    txt=txt+"                              \n <span class=\"textCfg\"> \n";
+                                    txt=txt+imgAndVoiceProjectArray[seed].ides+'\n';
+                                     txt=txt+"              \n                </span>\n <\p></div>\n";
+                                     txt=txt+"              <div class=\"col-4\" >";
+                                     txt=txt+"           <img   src=\""+imgAndVoiceProjectArray[seed].filepath+imgAndVoiceProjectArray[seed].filename+"\" class=\"img-fluid\"/>";
+                                     txt=txt+"          </div>\n          </div> \n";
+                $("#ivlist").html(txt);
+               
+	      
+				
+	  }//for over
+}//createIVProjectListView over
+
+//new open
+function newOpenWin(aa,bb){
+	// alert("bb="+bb);
+	 tit=bb;
+	 
+	 window.open('/images_manager/reportlist_imgapp.php?title='+bb, '_blank').focus();
+}
+function changeItem(){
+
+	     alert("8888"+tit);
+	     
+	     tit=$("#cname").val();
+	     alert("999"+tit);
+      $("#pvl option:contains('"+tit+"')").attr("selected",true).change();
+  }
 //re order array of image item
 function reOrderImageList(){
-//alert("888");
- var bbc=$(".carousel-item");
+
+
+var bbc=$(".carousel-item");
+len=bbc.length;
+//alert("图片len=="+len);
+ 
   // alert("bbc:"+$(bbc[0]).html()+"bbc len:"+bbc.length);
-   len=bbc.length;
+   
    idv="";
    oid="";
   // alert("len:"+len);
@@ -96,7 +210,7 @@ function addLisenToCarousel(){
 
 $('.carousel').on('slid.bs.carousel',function(e){
          //$("#logfull").val(txt);
-         
+         //alert("iforder=="+iforder);
          if(iforder=="-1"){
 	        //alert("reorder");
 	        reOrderImageList();
@@ -203,28 +317,62 @@ function listProjects(){
            
            htmlcc=htmlcc+"</select>";
            $("#ps").html(htmlcc);
+          // alert("666666==="+tit);
+          // $("#pvl option:contains('"+tit+"')").attr("selected",true).change();
            tit=$('#pvl option:selected').text();
-          // alert("8888888888");
-           cc={title:tit,posPage:0};
-           readJsonFile(cc);
+           // alert("8888888888"+tit);
+          // cc={title:tit,posPage:0};
+          // readJsonFile(cc);
         },
         complete: function (data){
-	            $("#pvl").on("change",function(){
-		            iforder="-1";
-		            tit=$('#pvl option:selected').text();
+	         
+	            tit_n=$("#cname").val();
+		           if(tit_n!=""){
+			            // alert("8888800000");
+			             $("#pvl option:contains('"+tit_n+"')").attr("selected",true);
+		           }
+		            //alert(tit_n);
+		            tit=tit_n;
 		            cc={title:tit,posPage:0};
+		            //readJsonFile(cc);
+	            $("#pvl").on("change",function(){
+		            //alert("oonchange");
+		            iforder="-1";
+		            $("#cname").val("");
+		            
+		            
+		            //alert(tit);
+		           // if(tit=="")
+		            tit_n=$("#cname").val();
+		            if(tit_n=="")
+		              tit=$('#pvl option:selected').text();
+		            else
+		               {
+			                //alert("tit_n"+tit_n);
+			                $("#pvl option:contains('"+tit_n+"')").attr("selected",true);
+		                 tit=tit_n;
+		               }
+		            
+		            cc={title:tit,posPage:0};
+		            //if(tit_n=="")
               readJsonFile(cc);
-		            //alert("well"+tit);
+		           
+		            
 		            
 	         });
+         // alert($("#pvl option:contains('少儿英语')").html());
+         // $("#pvl option:contains('少儿英语')").attr("selected",true).change();
+           // alert("tit"+tit);
+         //changeItem()；
         }
 	   });//ajax over
     
-	
+	      
 }//func over
 //≠=====≠==========
 function readJsonFile(cc){
- //alert(cc.title);
+	
+// alert("title="+cc.title);
 	$("#aa").html("请稍候,装载中(readJsonFile)...");
 	$.ajax({	
        type: "POST",
@@ -233,6 +381,7 @@ function readJsonFile(cc){
        data:cc,
        success: function(result){
 	          //handle result get file sum
+             //fileCount=0;
              pos_n=result.indexOf("]");
              fileCount=result.substring(1,pos_n);
              fcount=fileCount;
