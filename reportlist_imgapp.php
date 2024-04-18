@@ -14,7 +14,7 @@
   <!--
   <script src="https://www.elearn007.com/js/gl.js"></script>
   -->
-  <script src="/js/imgapp.js?x=133"></script>
+  <script src="/js/imgapp.js?x=138"></script>
   <script src="/jqueryUI011302/jquery-ui.js"></script>
   </head>
   <body style="padding-left:5px;padding-right:5px; background:white" >
@@ -97,7 +97,7 @@
   </div>
   
     <div id="ttest"> </div>
-  
+
   <script>
   //get projects name list and 
   //create a selection controls
@@ -107,15 +107,18 @@
 	     //from a name called imgapp_root file
       //that is in json_db_imgapp directory.
        
+       
         listProjects();
         
-        initTit();
-        createVoiceWall();
+        init_bb();
+        createVoiceWall_bb();
         addLisenToCarousel();
         ifdebug="0";
         getprojectsByArray();
         
+       
         $("#logfull").val(txt);
+        $('#cname').val(tit);
 	            
             
              
@@ -138,9 +141,6 @@
 
 
          
-         
-         
-       
    
   
   
@@ -152,8 +152,20 @@
   
   
   
-  
-  
+ <input id="cname" type="hidden" value=""/>
+   <?php
+
+      /*
+
+        $title = $_POST['title'];
+        echo "from vale is " . params['title'];
+        echo "<script>tit=". $title . " ;</script>";
+        echo "<script>$('#cname').value("+$title+") ;</script>";*/
+      // echo "value from page:" . htmlspecialchars($_GET["title"]) . "<p>finish</p>";
+       $title = htmlspecialchars($_GET["title"]);
+       echo "<script>tit = '$title';</script>";
+        
+   ?>
     <div id="carouselExampleCaptions" 
      class="carousel slide h-100 w-100" data-bs-ride="carousel">
      <div id="indicators" class="carousel-indicators">
