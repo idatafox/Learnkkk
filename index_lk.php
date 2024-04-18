@@ -14,7 +14,7 @@
   <!--
   <script src="https://www.elearn007.com/js/gl.js"></script>
   -->
-  <script src="/js/imgapp.js?x=143"></script>
+  <script src="/js/imgapp.js?x=146"></script>
   <script src="/jqueryUI011302/jquery-ui.js"></script>
   </head>
   <body style="padding-left:5px;padding-right:5px; background:white" >
@@ -31,8 +31,8 @@
         addLisenToCarousel();
         ifdebug="0";
         getprojectsByArray();
-        
         $("#logfull").val(txt);
+        
         
         
         
@@ -114,9 +114,10 @@
 <button type="button" class="btn btn-success">广东潮州市</button>
 <button type="button" class="btn btn-danger">汕头市</button>
 
- <div class="container text-center gfont">
- 	<!--  第一行 -->
- 	 	  <div class="row paddingCfg-a">
+ <div class="container 
+ text-center gfont">
+	<!--  第一行 -->
+		<div class="row paddingCfg-a">
     <div class="col-8" >
       <p class="textCfg">
       <a href="/service/small/service_01.html" target="_new" class="common">	
@@ -263,6 +264,49 @@
           <h1 class="paddingCfg">
           我们一起可以做什么？
          <h1>
+	<!-- 
+   display  english
+   
+  -->
+  
+	 <div id="ivlist" class="container 
+
+ text-center gfont">
+
+  		<div class="row paddingCfg-a">
+    
+       <div class="col-8" >
+               
+           <p class="textCfg">
+
+            <a href="/small/live/live_dqthz.html?x=1" target="_new" class="common">	
+
+            <b>图文直播|德清县到杭州市</b>
+            </a>
+               <span class="textCfg">
+          	  天气不错，但过程很波折。
+               </span>
+          </p>
+               
+               
+               
+        </div>
+
+       
+         <div class="col-4" >
+            <img   src="/images/changxing/changxing04.jpg" class="img-fluid"/>
+         </div>
+      </div>  <!--row end-->          
+     
+ </div><!--box end-->
+  
+  
+  
+  
+  
+  
+  
+
          <p class="">
          	     <ul class="fc">
          	          <li>
