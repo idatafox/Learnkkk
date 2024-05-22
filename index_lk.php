@@ -4,7 +4,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>学霸点读助手2024版00</title>
+    <title>学霸点读助手2024版_编程英语</title>
     <link href="/bootstrap5/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
  <link href="/css/root.css?x=10" rel="stylesheet" >
  
@@ -14,7 +14,7 @@
   <!--
   <script src="https://www.elearn007.com/js/gl.js"></script>
   -->
-  <script src="/js/imgapp.js?x=146"></script>
+  <script src="/js/imgapp.js?x=147"></script>
   <script src="/jqueryUI011302/jquery-ui.js"></script>
   </head>
   <body style="padding-left:5px;padding-right:5px; background:white" >
@@ -47,18 +47,12 @@
     <a class="nav-link active" aria-current="page" href="#">首页</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="/articles/small/art_2023030601.html">游记</a>
+    <a class="nav-link" href="/index_code.php">编程英语</a>
   </li>
     <li class="nav-item">
-    <a class="nav-link" href="#">视频</a>
+    <a class="nav-link" href="#">走遍中国</a>
   </li>
-  <li class="nav-item">
-    <a class="nav-link" href="/small/ima1.html">图集</a>
-  </li>
-  
-  <li class="nav-item">
-    <a class="nav-link"  href="/small/ima2.html">商品</a>
-  </li>
+
   <li class="nav-item">
     <a class="nav-link " href="/images_manager/reportlist.php">AI自习室</a>
   </li>
@@ -112,7 +106,8 @@
 <button type="button" class="btn btn-success">福建厦门</button>
 <button type="button" class="btn btn-success">福建漳州</button>
 <button type="button" class="btn btn-success">广东潮州市</button>
-<button type="button" class="btn btn-danger">汕头市</button>
+<button type="button" class="btn btn-success">汕头市</button>
+<button type="button" class="btn btn-danger">汕头市-惠来县</button>
 
  <div class="container 
  text-center gfont">
