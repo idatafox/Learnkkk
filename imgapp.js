@@ -49,10 +49,10 @@ function init_bb(){
        
 }
 
-function initTit(){
+function initTit(rootProjectName){
 	   
 		     htmlcc="";
-       cc={topic:"root"};
+       cc={topic:rootProjectName};
        $.ajax({	
 
         type: "POST",
@@ -87,9 +87,10 @@ function initTit(){
 
        
 }
-function createVoiceWall(){
+//finance , kid english and so on.
+function createVoiceWall(topcolumn){
     
-    tit="少儿英语";
+    tit=topcolumn;
 	   cc={title:tit,posPage:0};
     readJsonFile(cc);
     
@@ -526,9 +527,9 @@ function IVdisplay(obj){
 	 }
 	 
 	 
-	 function getprojectsByArray(){
+	 function getprojectsByArray(topcolumn){
    
-	                 cc={topic:"root"};
+	                 cc={topic:topcolumn};
           
                   pictxt="";
                   
