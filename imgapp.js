@@ -71,6 +71,7 @@ function initTit(){
 	                
 	                imgAndVoiceProject.filepath=result.records[seed].filepath;
 	                imgAndVoiceProject.columnname=result.records[seed].columnname;
+                  imgAndVoiceProject.title=result.records[seed].title;
 	                imgAndVoiceProjectArray.push(imgAndVoiceProject);
 	                
               }//for end.
@@ -131,7 +132,7 @@ function createIVProjectListView(){
    txt=txt+" data-bs-toggle=\"modal\" \n ";
    txt=txt+" onclick=newOpenWin('"+arrayobj[seed].ides+"','"+arrayobj[seed].columnname+"') \n";
    txt=txt+" data-bs-target=\"#exampleModalLong_8\"> \n";
-   txt=txt+imgAndVoiceProjectArray[seed].columnname+" \n</button>";
+   txt=txt+imgAndVoiceProjectArray[seed].title+" \n</button>";
                                     txt=txt+"                              \n <span class=\"textCfg\"> \n";
                                     txt=txt+imgAndVoiceProjectArray[seed].ides+'\n';
                                      txt=txt+"              \n                </span>\n <\p></div>\n";
