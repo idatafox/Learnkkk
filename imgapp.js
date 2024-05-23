@@ -52,6 +52,7 @@ function init_bb(){
 function initTit(rootProjectName){
 	   
 		     htmlcc="";
+		     
        cc={topic:rootProjectName};
        $.ajax({	
 
@@ -81,7 +82,7 @@ function initTit(rootProjectName){
 	             
          },//success over
          complete:function(data){
-	                createIVProjectListView();
+	                createIVProjectListView(rootProjectName);
          }// complete over
        });//ajax over
 
@@ -112,7 +113,8 @@ function createVoiceWall_bb(){
     
 }//createVoiceWall over
 
-function createIVProjectListView(){
+function createIVProjectListView(cc){
+	
 	  txt="";
    ncount=imgAndVoiceProjectArray.length;
    arrayobj=imgAndVoiceProjectArray;
@@ -131,7 +133,7 @@ function createIVProjectListView(){
                                   txt=txt+"                 <p class=\"textCfg\">\n";
                                    txt=txt+" <button type=\"button\" class=\"btn btn-primary \" \n";
    txt=txt+" data-bs-toggle=\"modal\" \n ";
-   txt=txt+" onclick=newOpenWin('"+arrayobj[seed].ides+"','"+arrayobj[seed].columnname+"') \n";
+   txt=txt+" onclick=newOpenWin('"+arrayobj[seed].ides+"','"+arrayobj[seed].columnname+"','"+cc+"') \n";
    txt=txt+" data-bs-target=\"#exampleModalLong_8\"> \n";
    txt=txt+imgAndVoiceProjectArray[seed].title+" \n</button>";
                                     txt=txt+"                              \n <span class=\"textCfg\"> \n";
@@ -148,11 +150,11 @@ function createIVProjectListView(){
 }//createIVProjectListView over
 
 //new open
-function newOpenWin(aa,bb){
+function newOpenWin(aa,bb,cc){
 	// alert("bb="+bb);
 	 tit=bb;
 	 
-	 window.open('/images_manager/reportlist_imgapp.php?title='+bb, '_blank').focus();
+	 window.open('/images_manager/reportlist_imgapp.php?title='+bb+'&rootcfg='+cc, '_blank').focus();
 }
 function changeItem(){
 
@@ -287,10 +289,10 @@ $('.carousel').on('slid.bs.carousel',function(e){
 	 });//on end
 
 }
-function listProjects(){
+function listProjects(rootcfgv){
 	
 	   htmlcc="";
-    cc={topic:"root"};
+    cc={topic:rootcfgv};
 
 	   $.ajax({	
         type: "POST",
