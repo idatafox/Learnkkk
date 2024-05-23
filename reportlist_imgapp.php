@@ -14,7 +14,7 @@
   <!--
   <script src="https://www.elearn007.com/js/gl.js"></script>
   -->
-  <script src="/js/imgapp.js?x=138"></script>
+  <script src="/js/imgapp.js?x=161"></script>
   <script src="/jqueryUI011302/jquery-ui.js"></script>
   </head>
   <body style="padding-left:5px;padding-right:5px; background:white" >
@@ -23,7 +23,7 @@
 	<!--   menubar  -->
 <nav class="navbar navbar-expand-lg navbar-light  bg-light">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#"><img src="/images/top.jpg" width="80" height="60"/></a>
+    <a class="navbar-brand" href="#"><img src="/images/youdian.jpg" width="80" height="60"/></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"><!--<img src="/images/root.png" width="80" height="160"/>--></span>
     </button>
@@ -107,10 +107,10 @@
 	     //from a name called imgapp_root file
       //that is in json_db_imgapp directory.
        
-       
-        listProjects();
+     //  alert("topcfg="+topcfg_a);
+        listProjects(topcfg_a);
         
-        init_bb();
+        init_bb("root");
         createVoiceWall_bb();
         addLisenToCarousel();
         ifdebug="0";
@@ -163,7 +163,8 @@
         echo "<script>$('#cname').value("+$title+") ;</script>";*/
       // echo "value from page:" . htmlspecialchars($_GET["title"]) . "<p>finish</p>";
        $title = htmlspecialchars($_GET["title"]);
-       echo "<script>tit = '$title';</script>";
+       $topcfg = htmlspecialchars($_GET["rootcfg"]);
+       echo "<script>tit = '$title';topcfg_a='$topcfg';</script>";
         
    ?>
     <div id="carouselExampleCaptions" 
