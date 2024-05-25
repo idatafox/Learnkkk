@@ -475,9 +475,9 @@ for(pseed=0;pseed<=fcount-1;pseed++)
              txt=txt+ "     <div id='a"+ipos+"' class=\"carousel-item active \">\n";
              else
              txt=txt+ "     <div id='a"+ipos+"' class=\"carousel-item  \">\n";
-             
+             txt=txt+"<div>"+ipos+"/"+fcount+"</div>";
              txt=txt+"     <img  src=\""+obj.filepath+""+obj.filename+"\" class=\"d-block w-100 h-100 \" alt=\"...\">";
-
+             
                                   txt=txt+"            <div class=\"carousel-caption "+obj.class_tit +"\" >\n";
                
                                    txt=txt+"                <h2 class=\""+ obj.class_tit_0+ "\"> <b>"+obj.title+"</b></h2>\n";
