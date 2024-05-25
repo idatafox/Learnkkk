@@ -237,12 +237,13 @@ $('.carousel').on('slid.bs.carousel',function(e){
              pos_n=result.indexOf("]");
              fileCount=result.substring(1,pos_n);
              result=result.substring(pos_n+1);
+             $("#page_pos").html((slideTo+1)+"/"+fileCount);
              
              result=JSON.parse(result);
              arrayobj=result.records;
              $('.hotTxt').remove();
         for(seed=0;seed<=arrayobj.length-1;seed++){
-
+            
 	            u1=arrayobj[seed];
 	            var newButton= $("<button></button>");
 
@@ -475,7 +476,7 @@ for(pseed=0;pseed<=fcount-1;pseed++)
              txt=txt+ "     <div id='a"+ipos+"' class=\"carousel-item active \">\n";
              else
              txt=txt+ "     <div id='a"+ipos+"' class=\"carousel-item  \">\n";
-             txt=txt+"<div>"+ipos+"/"+fcount+"</div>";
+
              txt=txt+"     <img  src=\""+obj.filepath+""+obj.filename+"\" class=\"d-block w-100 h-100 \" alt=\"...\">";
              
                                   txt=txt+"            <div class=\"carousel-caption "+obj.class_tit +"\" >\n";
