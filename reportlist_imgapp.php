@@ -7,14 +7,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>学霸点读助手2024版</title>
     <link href="/bootstrap5/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
- <link href="/css/root.css?x=6" rel="stylesheet" >
+ <link href="/css/root.css?x=8" rel="stylesheet" >
  
  <link rel="stylesheet" href="/jqueryUI011302/jquery-ui.css" >
  <script src="/js/jquery.js"></script>
   <!--
   <script src="https://www.elearn007.com/js/gl.js"></script>
   -->
-  <script src="/js/imgapp.js?x=161"></script>
+  <script src="/js/imgapp.js?x=184"></script>
   <script src="/jqueryUI011302/jquery-ui.js"></script>
   </head>
   <body style="padding-left:5px;padding-right:5px; background:white" >
@@ -56,7 +56,7 @@
 	
 	<!--   menubar  end-->
 	
-	
+	<!--
     <ul class="nav">
   <li class="nav-item">
     <a class="nav-link active" aria-current="page" href="/">首页</a>
@@ -74,12 +74,13 @@
   <li class="nav-item">
     <a class="nav-link"  href=""></a>
   </li>
-  <!--
+ 
   <li class="nav-item">
     <a class="nav-link ">帮助</a>
   </li>
-  -->
+  
 </ul>
+-->
     <!--
        &nbsp;    &nbsp;   &nbsp;  &nbsp; 专辑: &nbsp;<input id="tit" type="text" size='12' value='杭州旅游'/>
        -->
@@ -153,6 +154,7 @@
   
   
  <input id="cname" type="hidden" value=""/>
+ <div id="page_pos">0/0</div>
    <?php
 
       /*
