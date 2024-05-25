@@ -377,7 +377,7 @@ function listProjects(rootcfgv){
 function readJsonFile(cc){
 	
 // alert("title="+cc.title);
-	$("#aa").html("请稍候,装载中(readJsonFile)...");
+	$("#aa").html("");
 	$.ajax({	
        type: "POST",
        dataType: "text",
