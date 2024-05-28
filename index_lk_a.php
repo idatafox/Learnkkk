@@ -14,7 +14,7 @@
   <!--
   <script src="https://www.elearn007.com/js/gl.js"></script>
   -->
-  <script src="/js/imgapp.js?x=163"></script>
+  <script src="/js/imgapp.js?x=168"></script>
   <script src="/jqueryUI011302/jquery-ui.js"></script>
   </head>
   <body style="padding-left:5px;padding-right:5px; background:white" >
@@ -139,42 +139,15 @@
    show page list url list 
    order by post index
   -->
-  <script>
-    function doCreateUrlList(typeNM,pageCount){
-     // alert("doCreateUrlLnumber"+pageCount);
-      imgAndVoiceProjectArray=[];
-     // alert("array_leng:"+imgAndVoiceProjectArray.length);
-      
-      $("#ivlist").html("");
-      cc={topic:typeNM,pgCount:pageCount};
-      //get file full name
-        $.ajax({	
-        type: "POST",
-        dataType: "text",
-        url: "/images_manager/imgapp_getCfgList.php",
-        data:cc,
-        success: function(result){
-             // result=JSON.parse(result);
-             // alert(result);
-              
-             initTit(result);
-	           //  alert("sum project:"+imgAndVoiceProjectArray.length);
+	 <div id="urlpages" class="container text-center gfont">
 
 
-	             
-         },//success over
-         complete:function(data){
-	               
-         }// complete over
-       });//ajax over
-      //get file count number
-       }
-  </script>
-	 <div id="urllist" class="container text-center gfont">
-		   <button id="" onclick="doCreateUrlList('kidEn','1')">
-			      第一期
-			  </button>
   </div><!--urllist end-->
+  <script>
+
+    createPageListWebView('kidEn','9');
+  </script>
+
  
   
   
@@ -324,7 +297,7 @@
       <script src="/bootstrap5/js/bootstrap.bundle.min.js"  crossorigin="anonymous"></script>
     </body>
   </html>
-	<!--
+	
 	<button onclick="test1()">测试演示</button>
 		<textarea id="logfull" rows="200"
 
@@ -332,5 +305,5 @@
 
 		
 	</textarea>
-	-->
+	
 	
