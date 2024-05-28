@@ -15,9 +15,10 @@ var iforder="-1";
 var imgAndVoiceProjectArray=[];
 
 function test1(){
-	ccc=$("body").html();
-	$("#logfull").val(txt);
-	changeItem();
+  	alert("日志输出");
+  	ccc=$("body").html();
+  	$("#logfull").val(ccc);
+//	changeItem();
 // reOrderImageList();
 	//
 }
@@ -708,8 +709,57 @@ function IVdisplay_doc(obj){
     $("#ilist").html(doctxt);
 				                        
 }
+//input:topic and current page index get top 
+//config page content by url list .
+    function doCreateUrlList(typeNM,pageCount){
+
+     // alert("doCreateUrlLnumber"+pageCount);
+
+      imgAndVoiceProjectArray=[];
+     // alert("array_leng:"+imgAndVoiceProjectArray.length);
+      
+      $("#ivlist").html("");
+      cc={topic:typeNM,pgCount:pageCount};
+      //get file full name
+        $.ajax({	
+        type: "POST",
+        dataType: "text",
+        url: "/images_manager/imgapp_getCfgList.php",
+        data:cc,
+        success: function(result){
+             // result=JSON.parse(result);
+             // alert(result);
+              
+             initTit(result);
+	           //  alert("sum project:"+imgAndVoiceProjectArray.length);
 
 
+	             
+         },//success over
+         complete:function(data){
+	               
+         }// complete over
+       });//ajax over
+      //get file count number
+       }
 
+    //crrate page url list on front page.
 
+    //let people can visit by page index number
+
+    function createPageListWebView(topic,pagecount){
+	     
+	     for(seed=0;seed<=pagecount-1;seed++){
+		   // alert("pos:"+seed);
+		     // res=res+'		   <button id="'+seed+'" onclick="doCreateUrlList('"+topic+'","'+pagecount+'")">';
+		     var newButton= $("<button></button>");
+		     newButton.attr("id","pg"+seed);
+       newButton.attr("onclick","doCreateUrlList('"+topic+"','"+seed+"')");
+       newButton.html("第"+seed+"期");
+       newButton.css("padding","10px");
+       //alert(newButton.html())
+       $("#urlpages").append(newButton);
+		     
+	     }
+    }
 
