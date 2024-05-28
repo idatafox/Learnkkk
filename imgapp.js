@@ -13,7 +13,7 @@ var res;
 var iforder="-1";
 
 var imgAndVoiceProjectArray=[];
-
+var buttonObj=null;
 function test1(){
   	alert("日志输出");
   	ccc=$("body").html();
@@ -711,10 +711,10 @@ function IVdisplay_doc(obj){
 }
 //input:topic and current page index get top 
 //config page content by url list .
-    function doCreateUrlList(typeNM,pageCount){
+    function doCreateUrlList(obj,typeNM,pageCount){
 
      // alert("doCreateUrlLnumber"+pageCount);
-
+       
       imgAndVoiceProjectArray=[];
      // alert("array_leng:"+imgAndVoiceProjectArray.length);
       
@@ -729,7 +729,8 @@ function IVdisplay_doc(obj){
         success: function(result){
              // result=JSON.parse(result);
              // alert(result);
-              
+             
+             changButtonStyle(obj);
              initTit(result);
 	           //  alert("sum project:"+imgAndVoiceProjectArray.length);
 
@@ -754,12 +755,18 @@ function IVdisplay_doc(obj){
 		     // res=res+'		   <button id="'+seed+'" onclick="doCreateUrlList('"+topic+'","'+pagecount+'")">';
 		     var newButton= $("<button></button>");
 		     newButton.attr("id","pg"+seed);
-       newButton.attr("onclick","doCreateUrlList('"+topic+"','"+seed+"')");
+       newButton.attr("onclick","doCreateUrlList(this,'"+topic+"','"+seed+"')");
        newButton.html("第"+seed+"期");
        newButton.css("padding","10px");
+       newButton.attr("class","urlpage");
        //alert(newButton.html())
        $("#urlpages").append(newButton);
 		     
 	     }
     }
+    //change button style
+   function changButtonStyle(obj){
+     $(".urlpage").css("background-color","grey");
+     $(obj).css("background-color","red");
+   }
 
