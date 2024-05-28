@@ -52,7 +52,7 @@ function init_bb(){
 }
 
 function initTit(rootProjectName){
-	   
+	      
 		     htmlcc="";
 		     
        cc={topic:rootProjectName};
@@ -64,7 +64,9 @@ function initTit(rootProjectName){
         url: "/images_manager/imgapp_listprojects.php",
         data:cc,
         success: function(result){
+	           // alert("666"+result);
               result=JSON.parse(result);
+              
               global_title=result.note;
               for(seed=0;seed<=result.records.length-1;seed++){
 	                imgAndVoiceProject={};
@@ -169,6 +171,9 @@ function changeItem(){
       $("#pvl option:contains('"+tit+"')").attr("selected",true).change();
   }
 //re order array of image item
+//there are two factors:path and filename
+//file name is only from seed loop causecause
+
 function reOrderImageList(){
 
 
@@ -731,7 +736,7 @@ function IVdisplay_doc(obj){
         data:cc,
         success: function(result){
              // result=JSON.parse(result);
-             // alert(result);
+            
              
              changButtonStyle(obj);
              initTit(result);
