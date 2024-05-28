@@ -14,6 +14,7 @@ var iforder="-1";
 
 var imgAndVoiceProjectArray=[];
 var buttonObj=null;
+var global_title="欢迎你使用";
 function test1(){
   	alert("日志输出");
   	ccc=$("body").html();
@@ -64,6 +65,7 @@ function initTit(rootProjectName){
         data:cc,
         success: function(result){
               result=JSON.parse(result);
+              global_title=result.note;
               for(seed=0;seed<=result.records.length-1;seed++){
 	                imgAndVoiceProject={};
 	                obj=result.records;
@@ -83,6 +85,7 @@ function initTit(rootProjectName){
 	             
          },//success over
          complete:function(data){
+	                $('.paddingCfg').html(global_title);
 	                createIVProjectListView(rootProjectName);
          }// complete over
        });//ajax over
