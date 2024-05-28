@@ -14,7 +14,7 @@
   <!--
   <script src="https://www.elearn007.com/js/gl.js"></script>
   -->
-  <script src="/js/imgapp.js?x=151"></script>
+  <script src="/js/imgapp.js?x=301"></script>
   <script src="/jqueryUI011302/jquery-ui.js"></script>
   </head>
   <body style="padding-left:5px;padding-right:5px; background:white" >
@@ -28,7 +28,7 @@
        
         initTit("fa");
        // createVoiceWall("少儿英语");
-       // addLisenToCarousel();
+        addLisenToCarousel();
         ifdebug="0";
         //getprojectsByArray("root");
         $("#logfull").val(txt);
@@ -120,7 +120,7 @@
 
      
           <h1 class="paddingCfg">
-          优点第一期：学校场景
+          优点第一期：财经新闻
          <h1>
 	<!-- 
    display  english
@@ -135,7 +135,20 @@
      
  </div><!--box end-->
   
-  
+  	<!-- 
+
+   show page list url list 
+
+   order by post index
+  -->
+	 <div id="urlpages" class="container text-center gfont">
+
+
+  </div><!--urllist end-->
+  <script>
+
+    createPageListWebView('fa','2');
+  </script>
   
   
   
