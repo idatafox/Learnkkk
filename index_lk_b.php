@@ -4,8 +4,9 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>财经点读</title>
+    <title>小作文</title>
     <link href="/bootstrap5/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+
  <link href="/css/root.css?x=10" rel="stylesheet" >
  
  <link rel="stylesheet" href="/jqueryUI011302/jquery-ui.css" >
@@ -19,14 +20,39 @@
   </head>
   <body style="padding-left:5px;padding-right:5px; background:white" >
   	
-  
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+
+  <div class="container-fluid">
+
+    <a class="navbar-brand" href="#">喵课</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/index_lk_b.php">新闻茶座</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">编程英语</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="index.php">双语绘本</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" aria-disabled="true">外太空</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
 
   <script>
   
   $(document).ready(function(){
 	      //get global variables :tit
        
-        initTit("fa");
+        initTit("fa_0");
        // createVoiceWall("少儿英语");
         addLisenToCarousel();
         ifdebug="0";
@@ -41,36 +67,7 @@
    
   </script>
   
-  
-  <ul class="nav">
-	    <li class="nav-item">
 
-    <a class="nav-link" href="#"></a>
-
-    </li>
-  <li class="nav-item">
-	   
-    <a class="nav-link active" aria-current="page" href="#">
-	
-		    <img src="/images/youdian.jpg" width="100px" height="60px"/>
-		    财经新闻
-    </a>
-  </li>
-  <!--
-  <li class="nav-item">
-    <a class="nav-link" href="/index_code.php">编程英语</a>
-  </li>
-    <li class="nav-item">
-    <a class="nav-link" href="#">走遍中国</a>
-  </li>
-
-  <li class="nav-item">
-    <a class="nav-link " href="/images_manager/reportlist.php">AI自习室</a>
-  </li>-->
-  
-</ul>
-  
-  
   
   
   
@@ -178,7 +175,6 @@
         
 
     
-    <script src="/bootstrap5/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
    
    
    
@@ -294,8 +290,10 @@
     </div>
    
     </div>
-      <script src="/bootstrap5/js/bootstrap.bundle.min.js"  crossorigin="anonymous"></script>
     </body>
+        <script src="/bootstrap5/js/bootstrap.bundle.min.js?x=103"  crossorigin="anonymous"></script>
+
+    
   </html>
 	<!--
 	<button onclick="test1()">测试演示</button>
