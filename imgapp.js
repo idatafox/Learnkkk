@@ -237,6 +237,17 @@ function rechangeItemNote(){
 
 	   }
 }
+var ifDisCN=-1;
+function useCN(){
+	 if(ifDisCN==-1){
+		   ifDisCN=0;
+	 }
+	 else
+	 {
+		   ifDisCN=-1;
+	 }
+	// alert(ifDisCN);
+}
 function addLisenToCarousel(){
 
 $('.carousel').on('slid.bs.carousel',function(e){
@@ -284,7 +295,10 @@ $('.carousel').on('slid.bs.carousel',function(e){
               newButton.addClass("hotTxt");
               newButton.addClass(u1.classname_en);
               $('.carousel-inner').find('.active').append(newButton);
-             
+              if(ifDisCN==0){
+	               createChineseButton(newButton);
+              }
+              
              
               
         }//for loop
@@ -320,6 +334,28 @@ $('.carousel').on('slid.bs.carousel',function(e){
 	 });//on end
 
 }
+
+/**
+ * create a Chinese  txt      buttxt below english button.
+ */
+ function createChineseButton(pbutton){
+           // alert("add Chinese button");
+	           var newButton= $("<button style='margin-bottom:3px'></button>");
+             newButton.html(u1.content_cn);
+            // newButton.css({"position":"relative","top":u1.top,"left":"0px","z-index":"999"});
+              newButton.attr("audio_cn",u1.audio_cn);
+             // alert(u1.top);
+              newButton.css({"top":u1.top});
+              newButton.css({"left":u1.left});
+              newButton.addClass("hotTxt_en");
+              newButton.addClass(u1.classname_en);
+              pbutton.append(newButton);
+              
+	
+ }
+ 
+
+
 
 /**
  * loop play audio file list
@@ -842,3 +878,10 @@ function IVdisplay_doc(obj){
      $(obj).css("background-color","red");
    }
 
+/**
+ * display Chinese phases 
+ * call the func from : reportlist_imgapp.php 
+ */
+ function displayChinesePhase(){
+	  
+ }
