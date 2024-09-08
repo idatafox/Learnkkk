@@ -23,6 +23,24 @@ function test1(){
 // reOrderImageList();
 	//
 }
+	function changeitemstyle(){
+		alert("change css");
+		$('.carousel-item').css("padding-bottom","1px");
+	}
+		function stopAutoNext(){
+		  	cc=$('#carouselExampleCaptions').attr("data-bs-ride");
+		//	alert(cc);//data-bs-ride
+		  	$('#carouselExampleCaptions').attr("data-bs-ride","carousel");
+
+   $('#carouselExampleCaptions').carousel('pause');  
+    
+    
+    $('#carouselExampleCaptions').attr("data-bs-interval","0");
+    alert("已经暂停");
+    
+		}
+	
+
 function init_bb(){
 			     htmlcc="";
 
@@ -254,7 +272,7 @@ $('.carousel').on('slid.bs.carousel',function(e){
         for(seed=0;seed<=arrayobj.length-1;seed++){
             
 	            u1=arrayobj[seed];
-	            var newButton= $("<button></button>");
+	            var newButton= $("<button style='margin-bottom:3px'></button>");
 
              newButton.html(u1.content_en);
              newButton.css({"position":"relative","top":u1.top,"left":"0px","z-index":"999"});
@@ -272,6 +290,8 @@ $('.carousel').on('slid.bs.carousel',function(e){
         }//for loop
 	        //重新添加图片总说明
 	        fx=$('.carousel-inner').find('.active img').attr("src");
+	        $('.carousel-inner').find('.carousel-item').attr("data-bs-interval","600000");
+	        
 	        // alert('fx:'+fx+"ttoposp:"+slideTo);
 	         $('.carousel-inner').find('.active h8').html(result.filename);
 	         $('.carousel-inner').find('.active h2').html(result.title);
@@ -282,10 +302,11 @@ $('.carousel').on('slid.bs.carousel',function(e){
              
        },//success
        complete: function (data) {
-                                  	         
+	  
+   
            audioName = new Audio();
            $('.hotTxt').on("click",function(){
-           
+	           
             audioEn=$(this).attr("audio_en");
                                    	           
                      
@@ -299,6 +320,48 @@ $('.carousel').on('slid.bs.carousel',function(e){
 	 });//on end
 
 }
+
+/**
+ * loop play audio file list
+ */
+ var audiosPool=[];
+ 
+ 
+function displayMutiAudioFiles(){
+	         // alert("display...");
+	          audiosPool=[];
+	             $("button[audio_en]").each(function(index){
+		            //  alert("index>>"+index+">>"+$(this).attr("audio_en"));
+		              audiosPool.push($(this).attr("audio_en"));
+		              
+	             });
+	           
+	          // audiosPool.push("yourbike.mp3");
+	          // audiosPool.push("mikes.mp3");
+	           //alert("000");
+	          // for(i=0;i<=audiosPool.length-1;i++){
+	              i=0;
+		             audioName = new Audio();
+		             //audioName.src="/audioLib/bike/"+audiosPool[i];
+		             audioName.src=audiosPool[i];
+		             $("button[audio_en]").eq(0).css({"background-color":"red"});
+               if(i==0)
+               audioName.play();
+               audioName.addEventListener("ended", function(){
+	              if(i<=audiosPool.length-1){
+	                 i++;
+	                 //alert(i+" --->>finished");
+	                 $("button[audio_en]").eq(i-1).css({"background-color":"#666","font-size":"18px"});
+	                 $("button[audio_en]").eq(i).css({"background-color":"red","font-size":"25px"});
+	                 audioName.src=audiosPool[i];
+                  audioName.play();
+		                
+	              }
+               },false);
+               
+	         //  }//forEnd
+}
+
 function listProjects(rootcfgv){
 	
 	   htmlcc="";
@@ -510,8 +573,9 @@ for(pseed=0;pseed<=fcount-1;pseed++)
   //next code for image and videoes
 
 function IVdisplay(obj){
-
+	 // alert(obj.title);
   if(obj.ifindexpage=="0"){
+
    pictxt=pictxt+"<div class=\"row paddingCfg-a\">\n";
    pictxt=pictxt+"<div class=\"col-8\" >\n";
    pictxt=pictxt+"<p class=\"textCfg\">";
