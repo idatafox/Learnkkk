@@ -44,7 +44,7 @@ function test1(){
  * read Chinese messages.
  */
 function readChineseTxt(outerMsg){
-	  alert("speaking...");
+	 // alert("speaking...");
 	  const utterance = new SpeechSynthesisUtterance(outerMsg);
 
   // Select a voice
@@ -266,8 +266,17 @@ function useCN(obj){
 /**
  * auto read Chinese messages.
  */
+ var audiosPool_cn=[];
 function addLisenToCarousel_cn(){
-	
+	        audiosPool_cn=[];
+	             $("button[audio_cn]").each(function(index){
+
+		            //  alert("index>>"+index+">>"+$(this).attr("audio_en"));
+		            //  alert($(this).text());
+		              readChineseTxt($(this).text());
+		              audiosPool_cn.push($(this).text());
+		              
+	             });
 }
 
 function addLisenToCarousel(){
