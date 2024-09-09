@@ -7,40 +7,110 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>学霸点读助手2024版</title>
     <link href="/bootstrap5/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
- <link href="/css/root.css?x=8" rel="stylesheet" >
+ <link href="/css/root.css?x=9" rel="stylesheet" >
  
  <link rel="stylesheet" href="/jqueryUI011302/jquery-ui.css" >
  <script src="/js/jquery.js"></script>
   <!--
   <script src="https://www.elearn007.com/js/gl.js"></script>
   -->
-  <script src="/js/imgapp.js?x=184"></script>
+  <script src="/js/imgapp.js?x=244"></script>
   <script src="/jqueryUI011302/jquery-ui.js"></script>
   </head>
   <body style="padding-left:5px;padding-right:5px; background:white" >
 	
 	
 	<!--   menubar  -->
-<nav class="navbar navbar-expand-lg navbar-light  bg-light">
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+
+
+
   <div class="container-fluid">
-    <a class="navbar-brand" href="#"><img src="/images/youdian.jpg" width="80" height="60"/></a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"><!--<img src="/images/root.png" width="80" height="160"/>--></span>
+
+    <a class="navbar-brand" href="#">AI英语</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-      <div class="navbar-nav">
-        <a class="nav-link active" aria-current="page" href="#">少儿英语</a>
-        <a class="nav-link" href="#">天文知识</a>
-        <a class="nav-link" href="#">少儿编程</a>
-        <a class="nav-link" href="#">文&nbsp;&nbsp;档</a>
-        <a class="nav-link" href="#">下&nbsp;&nbsp;载</a>
-        <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">Termux ifconfig</a>
-      </div>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+      
+
+        <li class="nav-item">
+
+          <a class="nav-link active" aria-current="page" href="/index.php">小对话</a>
+        </li>
+        
+          <li class="nav-item">
+
+          <a class="nav-link active" aria-current="page" href="/index.php">小故事</a>
+        </li>
+        
+        
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/index_lk_b.php">小作文</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/index.php">编程英语</a>
+        </li>
+        
+        <li class="nav-item">
+          <a class="nav-link" href="/index_lk_b.php">财经投资</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">商务英语</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">求职英语</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="index.php">城市地理</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" aria-disabled="true">外太空</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" aria-disabled="true">环球美食</a>
+        </li>
+       <li class="nav-item">
+          <a class="nav-link" aria-disabled="true">世界历史</a>
+        </li>
+       <li class="nav-item">
+          <a class="nav-link" aria-disabled="true">动物世界</a>
+        </li>
+      </ul>
     </div>
   </div>
 </nav>
-	
-	
+
+	<span id="mmenu-sub">
+		   <input type="button"
+		          value="暂停"
+		          onClick="changeitemstyle()"/>
+		</span>
+		
+			<span id="mmenu-sub-readmul">
+		   <input type="button"
+		          value="跟读"
+		          onClick="displayMutiAudioFiles()"/>
+		</span>
+		
+		<span id="mmenu-sub-readmul">
+
+		   <input type="button"
+
+		          value="中文"
+		          onClick="useCN(this)"/>
+		</span>
+		<!--    js text to voice   -->
+				<span id="mmenu-sub-readmul">
+		   <input type="button"
+		          value="机器读"
+		          onClick="readChineseTxt('大家好')"/>
+		</span>
+		
+		
+		
+		
 	 <span id='bbc' style="text-align:center">
    </span>   
                
@@ -108,7 +178,8 @@
 	     //from a name called imgapp_root file
       //that is in json_db_imgapp directory.
        
-     //  alert("topcfg="+topcfg_a);
+      //alert("topcfg="+topcfg_a);
+        //select control creator on html page.
         listProjects(topcfg_a);
         
         init_bb("root");
@@ -170,12 +241,14 @@
         
    ?>
     <div id="carouselExampleCaptions" 
-     class="carousel slide h-100 w-100" data-bs-ride="carousel">
+     class="carousel slide h-100 w-100" data-bs-ride="true"
+     style="padding-bottom:0px"
+     >
      <div id="indicators" class="carousel-indicators">
 
      </div>
-  <div id="inner" class="carousel-inner">
-  	
+  <div id="inner" class="carousel-inner" style="padding-bottom:100px;height:auto;">
+	
      
     
   </div>
@@ -206,12 +279,12 @@
   
         <!--   foot    -->
 
-	<p></p>
+	<p ></p>
 
 	<p></p>
     <p></p>
 	
-	<div class="container bkA">
+	<div class="container bkA" >
 		
 		<div class="row ">
     <div class="col-3" >
@@ -231,7 +304,7 @@
 		
 		
 		
-		<div class="row paddingCfg-a">
+		<div class="row paddingCfg-a" >
     <div class="col-1 " >
            
     </div>
