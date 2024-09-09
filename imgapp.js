@@ -40,7 +40,20 @@ function test1(){
     
 		}
 	
+/**
+ * read Chinese messages.
+ */
+function readChineseTxt(outerMsg){
+	  alert("speaking...");
+	  const utterance = new SpeechSynthesisUtterance(outerMsg);
 
+  // Select a voice
+  const voices = speechSynthesis.getVoices();
+  utterance.voice = voices[2]; // Choose a specific voice
+
+  // Speak the text
+  speechSynthesis.speak(utterance);
+}
 function init_bb(){
 			     htmlcc="";
 
@@ -238,9 +251,11 @@ function rechangeItemNote(){
 	   }
 }
 var ifDisCN=-1;
-function useCN(){
+function useCN(obj){
 	 if(ifDisCN==-1){
 		   ifDisCN=0;
+		   
+     alert("中文启用");
 	 }
 	 else
 	 {
@@ -248,6 +263,13 @@ function useCN(){
 	 }
 	// alert(ifDisCN);
 }
+/**
+ * auto read Chinese messages.
+ */
+function addLisenToCarousel_cn(){
+	
+}
+
 function addLisenToCarousel(){
 
 $('.carousel').on('slid.bs.carousel',function(e){
@@ -347,7 +369,7 @@ $('.carousel').on('slid.bs.carousel',function(e){
              // alert(u1.top);
               newButton.css({"top":u1.top});
               newButton.css({"left":u1.left});
-              newButton.addClass("hotTxt_en");
+              newButton.addClass("hotTxt_cn");
               newButton.addClass(u1.classname_en);
               pbutton.append(newButton);
               
