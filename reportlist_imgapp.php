@@ -14,7 +14,7 @@
   <!--
   <script src="https://www.elearn007.com/js/gl.js"></script>
   -->
-  <script src="/js/imgapp.js?x=244"></script>
+  <script src="/js/imgapp.js?x=248"></script>
   <script src="/jqueryUI011302/jquery-ui.js"></script>
   </head>
   <body style="padding-left:5px;padding-right:5px; background:white" >
@@ -105,7 +105,7 @@
 				<span id="mmenu-sub-readmul">
 		   <input type="button"
 		          value="机器读"
-		          onClick="readChineseTxt('大家好')"/>
+		          onClick="addLisenToCarousel_cn()"/>
 		</span>
 		
 		
