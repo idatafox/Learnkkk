@@ -411,7 +411,7 @@ function displayMutiAudioFiles(){
 		             audioName = new Audio();
 		             //audioName.src="/audioLib/bike/"+audiosPool[i];
 		             audioName.src=audiosPool[i];
-		             $("button[audio_en]").eq(0).css({"background-color":"red"});
+		             $("button[audio_en]").eq(0).css({"background-color":"#000099"});
                if(i==0)
                audioName.play();
                audioName.addEventListener("ended", function(){
@@ -419,7 +419,7 @@ function displayMutiAudioFiles(){
 	                 i++;
 	                 //alert(i+" --->>finished");
 	                 $("button[audio_en]").eq(i-1).css({"background-color":"#666","font-size":"18px"});
-	                 $("button[audio_en]").eq(i).css({"background-color":"red","font-size":"25px"});
+	                 $("button[audio_en]").eq(i).css({"background-color":"#000099","font-size":"25px"});
 	                 audioName.src=audiosPool[i];
                   audioName.play();
 		                
