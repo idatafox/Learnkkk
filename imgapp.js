@@ -83,7 +83,7 @@ function init_bb(){
 }
 
 function initTit(rootProjectName){
-	      
+	      //alert("666");
 		     htmlcc="";
 		     
        cc={topic:rootProjectName};
@@ -92,7 +92,8 @@ function initTit(rootProjectName){
         type: "POST",
 
         dataType: "text",
-        url: "/images_manager/imgapp_listprojects.php",
+       url: "/images_manager/imgapp_listprojects.php",
+      //  url: "/json_db_imgapp/imgapp_fa_0.json",
         data:cc,
         success: function(result){
 	           // alert("666"+result);
@@ -438,6 +439,7 @@ function listProjects(rootcfgv){
         type: "POST",
         dataType: "text",
         url: "/images_manager/imgapp_listprojects.php",
+       //  url: "/json_db_imgapp/imgapp_root.json",
         data:cc,
         success: function(result){
 	          result=JSON.parse(result);
