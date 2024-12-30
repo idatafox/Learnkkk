@@ -7,14 +7,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>学霸点读助手2024版</title>
     <link href="/bootstrap5/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
- <link href="/css/root.css?x=9" rel="stylesheet" >
+ <link href="/css/root.css?x=25" rel="stylesheet" >
  
  <link rel="stylesheet" href="/jqueryUI011302/jquery-ui.css" >
  <script src="/js/jquery.js"></script>
   <!--
   <script src="https://www.elearn007.com/js/gl.js"></script>
   -->
-  <script src="/js/imgapp.js?x=248"></script>
+  <script src="/js/imgapp.js?x=801"></script>
   <script src="/jqueryUI011302/jquery-ui.js"></script>
   </head>
   <body style="padding-left:5px;padding-right:5px; background:white" >
@@ -42,7 +42,7 @@
         
           <li class="nav-item">
 
-          <a class="nav-link active" aria-current="page" href="/index.php">小故事</a>
+          <a class="nav-link active" aria-current="page" href="/index_lk_stories.php">讲故事</a>
         </li>
         
         
